@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambição 2030 | Pacto Global da ONU no Brasil</title>
+    <meta name="description" content="Conheça a Ambição 2030, uma estratégia do Pacto Global para acelerar as metas da Agenda 2030 no Brasil através de 10 movimentos empresariais.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Cores aproximadas dos ODS para os movimentos - Substitua pelas cores exatas do manual */
+        .bg-mov-agua { background-color: #4C9FDD; } /* ODS 6 - Azul Claro */
+        .text-mov-agua { color: #4C9FDD; }
+        .border-mov-agua { border-color: #4C9FDD; }
+
+        .bg-mov-netzero { background-color: #54A548; } /* ODS 13 - Verde */
+        .text-mov-netzero { color: #54A548; }
+        .border-mov-netzero { border-color: #54A548; }
+
+        .bg-mov-elaslideram { background-color: #EF4A40; } /* ODS 5 - Vermelho Alaranjado */
+        .text-mov-elaslideram { color: #EF4A40; }
+        .border-mov-elaslideram { border-color: #EF4A40; }
+
+        .bg-mov-menteemfoco { background-color: #44A055; } /* ODS 3 - Verde Saúde */
+        .text-mov-menteemfoco { color: #44A055; }
+        .border-mov-menteemfoco { border-color: #44A055; }
+
+        .bg-mov-racaeprioridade { background-color: #E21A8B; } /* ODS 10 - Rosa Escuro/Magenta */
+        .text-mov-racaeprioridade { color: #E21A8B; }
+        .border-mov-racaeprioridade { border-color: #E21A8B; }
+
+        .bg-mov-salariodigno { background-color: #A21A4D; } /* ODS 8 - Vermelho Escuro */
+        .text-mov-salariodigno { color: #A21A4D; }
+        .border-mov-salariodigno { border-color: #A21A4D; }
+
+        .bg-mov-transparencia { background-color: #174F90; } /* ODS 16 - Azul Escuro */
+        .text-mov-transparencia { color: #174F90; }
+        .border-mov-transparencia { border-color: #174F90; }
+
+        .bg-mov-impactoamazonia { background-color: #3F7E46; } /* ODS 15 - Verde Escuro */
+        .text-mov-impactoamazonia { color: #3F7E46; }
+        .border-mov-impactoamazonia { border-color: #3F7E46; }
+
+        .bg-mov-conexaocircular { background-color: #CF8D2A; } /* ODS 12 - Laranja/Mostarda */
+        .text-mov-conexaocircular { color: #CF8D2A; }
+        .border-mov-conexaocircular { border-color: #CF8D2A; }
+
+        .bg-mov-educa { background-color: #C51A2D; } /* ODS 4 - Vermelho */
+        .text-mov-educa { color: #C51A2D; }
+        .border-mov-educa { border-color: #C51A2D; }
+
+        .section-title-underline::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #007BFF; /* Cor primária do Pacto Global - Ajustar */
+            margin: 10px auto 0;
+        }
+        .movement-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .movement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .faq-item .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 500px; /* Ajuste conforme necessário */
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(180deg);
+        }
+        .hero-bg {
+            /* Você pode adicionar uma imagem de fundo sutil aqui se desejar */
+            /* background-image: url('path/to/subtle-background.jpg'); */
+            background-size: cover;
+            background-position: center;
+        }
+        .forum-bg {
+            background-color: #f0f4f8; /* Um azul muito claro, por exemplo */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Navbar -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm fixed w-full z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <!-- Substituir pelo logo real -->
+                <img src="https://www.unglobalcompact.org/assets/logos/un-global-compact-logo-blue.svg" alt="Pacto Global Ambição 2030" class="h-10 md:h-12 mr-3">
+                <span class="font-bold text-xl md:text-2xl text-blue-700">Ambição <span class="text-blue-500">2030</span></span>
+            </a>
+            <div class="hidden md:flex space-x-4">
+                <a href="#sobre" class="text-gray-700 hover:text-blue-600">Sobre</a>
+                <a href="#movimentos" class="text-gray-700 hover:text-blue-600">Movimentos</a>
+                <a href="#forum" class="text-gray-700 hover:text-blue-600">Fórum</a>
+                <a href="#adesao" class="text-gray-700 hover:text-blue-600">Como Aderir</a>
+                <a href="#faq" class="text-gray-700 hover:text-blue-600">FAQ</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <a href="#sobre" class="block py-2 px-4 text-sm text-gray-700 hover:bg-blue-50">Sobre</a>
+            <a href="#movimentos" class="block py-2 px-4 text-sm text-gray-700 hover:bg-blue-50">Movimentos</a>
+            <a href="#forum" class="block py-2 px-4 text-sm text-gray-700 hover:bg-blue-50">Fórum</a>
+            <a href="#adesao" class="block py-2 px-4 text-sm text-gray-700 hover:bg-blue-50">Como Aderir</a>
+            <a href="#faq" class="block py-2 px-4 text-sm text-gray-700 hover:bg-blue-50">FAQ</a>
+        </div>
+    </nav>
+
+    <!-- Seção Herói -->
+    <header id="hero" class="hero-bg pt-24 md:pt-32 min-h-screen flex items-center">
+        <div class="container mx-auto px-6 text-center md:text-left">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-700 leading-tight">
+                        Ambição 2030:
+                        <span class="block text-gray-800">Acelerando o Futuro Sustentável do Brasil.</span>
+                    </h1>
+                    <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-xl mx-auto md:mx-0">
+                        Um chamado às empresas brasileiras para reconhecerem a urgência e promoverem ações concretas com metas ambiciosas, impulsionando os Objetivos de Desenvolvimento Sustentável.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#movimentos" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                            Conheça os Movimentos
+                        </a>
+                        <a href="#adesao" class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-8 rounded-lg text-lg shadow-md transition duration-300 ease-in-out">
+                            Faça Parte
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <!-- Substituir pelo visual principal -->
+                    <img src="https://via.placeholder.com/500x400.png?text=Visual+Ambição+2030" alt="Ambição 2030 Impacto" class="rounded-lg shadow-2xl max-w-md w-full">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Sobre / O Desafio -->
+    <section id="sobre" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 section-title-underline">A Urgência da Ação e Nossa Solução</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">A Agenda 2030 nos apresenta metas claras. A Ambição 2030 é a nossa estratégia para catalisar o progresso no Brasil.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-4">O Desafio: Acelerar os ODS no Brasil</h3>
+                    <p class="text-gray-600 mb-3 leading-relaxed">
+                        Apesar dos avanços, o Brasil enfrenta desafios significativos para alcançar os Objetivos de Desenvolvimento Sustentável. É crucial que o setor privado assuma um papel de protagonismo, inovando e investindo em soluções que gerem impacto positivo e duradouro.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Precisamos de mais do que intenções; precisamos de compromissos mensuráveis e ações transformadoras.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-4">Ambição 2030: A Resposta Estratégica</h3>
+                    <p class="text-gray-600 mb-3 leading-relaxed">
+                        A Ambição 2030, uma iniciativa do Pacto Global da ONU no Brasil, convoca as empresas a se unirem em torno de movimentos temáticos, focados nos ODS prioritários para o país.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Ao aderir, sua empresa se compromete publicamente com metas ambiciosas, ganha acesso a conhecimento, ferramentas e uma rede de colaboração para impulsionar a sustentabilidade em seus negócios e em toda a sua cadeia de valor. A participação é gratuita para membros do Pacto Global.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 10 Movimentos -->
+    <section id="movimentos" class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 section-title-underline">Nossos 10 Movimentos Transformadores</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Conecte-se com o movimento que mais se alinha à sua estratégia e junte-se a nós para criar um impacto real.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Card Movimento +Água -->
+                <div class="movement-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="bg-mov-agua text-white p-4 flex items-center justify-center h-24">
+                        <!-- Ícone placeholder, substitua pelo ícone real do movimento -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-mov-agua mb-2">Movimento +Água</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">Foco na gestão sustentável da água e saneamento para todos.</p>
+                        <a href="#" class="mt-auto inline-block text-sm bg-mov-agua hover:opacity-90 text-white font-semibold py-2 px-4 rounded-md transition duration-300 text-center">Saiba Mais</a>
+                    </div>
+                </div>
+
+                <!-- Card Movimento Ambição Net Zero -->
+                <div class="movement-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="bg-mov-netzero text-white p-4 flex items-center justify-center h-24">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.014A7.962 7.962 0 0112 2c2.485 0 4.847.938 6.986 2.639A7.962 7.962 0 0121 10c0 3-1.843 6.657-3.343 8.657z" /></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-mov-netzero mb-2">Ambição Net Zero</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">Compromisso com a neutralidade de carbono e combate às mudanças climáticas.</p>
+                        <a href="#" class="mt-auto inline-block text-sm bg-mov-netzero hover:opacity-90 text-white font-semibold py-2 px-4 rounded-md transition duration-300 text-center">Saiba Mais</a>
+                    </div>
+                </div>
+
+                <!-- Card Movimento Elas Lideram 2030 -->
+                <div class="movement-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="bg-mov-elaslideram text-white p-4 flex items-center justify-center h-24">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 016-6h6a6 6 0 016 6v1h-3" /></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-mov-elaslideram mb-2">Elas Lideram 2030</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">Promovendo a igualdade de gênero e o empoderamento feminino na liderança.</p>
+                        <a href="#" class="mt-auto inline-block text-sm bg-mov-elaslideram hover:opacity-90 text-white font-semibold py-2 px-4 rounded-md transition duration-300 text-center">Saiba Mais</a>
+                    </div>
+                </div>
+
+                <!-- Card Movimento Mente em Foco -->
+                <div class="movement-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="bg-mov-menteemfoco text-white p-4 flex items-center justify-center h-24">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13c0-2.792 2.208-5.058 4.983-5.058S14.966 10.208 14.966 13c0 2.792-2.208 5.058-4.983 5.058S5 15.792 5 13zm14-1a7.002 7.002 0 00-14 0h14zM5 12H3M21 12h-2M12 5V3M12 21v-2" /></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-mov-menteemfoco mb-2">Mente em Foco</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">Cuidando da saúde mental e bem-estar no ambiente corporativo.</p>
+                        <a href="#" class="mt-auto inline-block text-sm bg-mov-menteemfoco hover:opacity-90 text-white font-semibold py-2 px-4 rounded-md transition duration-300 text-center">Saiba Mais</a>
+                    </div>
+                </div>
+                
+                <!-- Card Movimento Raça é Prioridade -->
+                <div class="movement-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="bg-mov-racaeprioridade text-white p-4 flex items-center justify-center h-24">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.084-1.285-.248-1.879M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.084-1.285.248-1.879m0 0a5.002 5.002 0 019.504 0M7.496 16.121A5.002 5.002 0 0112 13.5a5.002 5.002 0 014.504 2.621M12 13.5V9.75M12 9.75a3 3 0 100-6 3 3 0 000 6z" /></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-mov-racaeprioridade mb-2">Raça é Prioridade</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">Combatendo o racismo e promovendo a equidade racial nas empresas.</p>
+                        <a href="#" class="mt-auto inline-block text-sm bg-mov-racaeprioridade hover:opacity-90 text-white font-semibold py-2 px-4 rounded-md transition duration-300 text-center">Saiba Mais</a>
+                    </div>
+                </div>
+
+                <!-- Card Movimento Salário Digno -->
+                <div class="movement-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="bg-mov-salariodigno text-white p-4 flex items-center justify-center h-24">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-mov-salariodigno mb-2">Salário Digno</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">Garantindo remuneração justa e digna para todos os trabalhadores.</p>
+                        <a href="#" class="mt-auto inline-block text-sm bg-mov-salariodigno hover:opacity-90 text-white font-semibold py-2 px-4 rounded-md transition duration-300 text-center">Saiba Mais</a>
+                    </div>
+                </div>
+
+                <!-- Card Movimento Transparência 100% -->
+                <div class="movement-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="bg-mov-transparencia text-white p-4 flex items-center justify-center h-24">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-mov-transparencia mb-2">Transparência 100%</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">Promovendo a integridade, ética e transparência nos negócios.</p>
+                        <a href="#" class="mt-auto inline-block text-sm bg-mov-transparencia hover:opacity-90 text-white font-semibold py-2 px-4 rounded-md transition duration-300 text-center">Saiba Mais</a>
+                    </div>
+                </div>
+
+                <!-- Card Movimento Impacto Amazônia -->
+                <div class="movement-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="bg-mov-impactoamazonia text-white p-4 flex items-center justify-center h-24">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.652 4.243l.008.008L12 2.778l4.34.008.008-.008A4.5 4.5 0 0121 8.5V11a2 2 0 01-2 2H5a2 2 0 01-2-2V8.5a4.5 4.5 0 014.652-4.257z" /></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-mov-impactoamazonia mb-2">Impacto Amazônia</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">Engajando o setor privado na conservação e desenvolvimento sustentável da Amazônia.</p>
+                        <a href="#" class="mt-auto inline-block text-sm bg-mov-impactoamazonia hover:opacity-90 text-white font-semibold py-2 px-4 rounded-md transition duration-300 text-center">Saiba Mais</a>
+                    </div>
+                </div>
+                
+                <!-- Card Movimento Conexão Circular -->
+                 <div class="movement-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="bg-mov-conexaocircular text-white p-4 flex items-center justify-center h-24">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-mov-conexaocircular mb-2">Conexão Circular</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">Fomentando a economia circular e o uso eficiente de recursos.</p>
+                        <a href="#" class="mt-auto inline-block text-sm bg-mov-conexaocircular hover:opacity-90 text-white font-semibold py-2 px-4 rounded-md transition duration-300 text-center">Saiba Mais</a>
+                    </div>
+                </div>
+
+                <!-- Card Movimento Educa 2030 -->
+                <div class="movement-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="bg-mov-educa text-white p-4 flex items-center justify-center h-24">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v3.75m0-10.75L3 10m9-5l9 5m-9 5v3.75m0-3.75L3 10m0 0v3.75m9-3.75V10" /></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-mov-educa mb-2">Educa 2030</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">Investindo na educação de qualidade para um futuro sustentável.</p>
+                        <a href="#" class="mt-auto inline-block text-sm bg-mov-educa hover:opacity-90 text-white font-semibold py-2 px-4 rounded-md transition duration-300 text-center">Saiba Mais</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Fórum Ambição 2030 -->
+    <section id="forum" class="py-16 md:py-24 forum-bg">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center bg-white shadow-xl rounded-lg p-8 md:p-12">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
+                    <span class="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase">Evento Chave</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Fórum Ambição 2030</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Participe do principal encontro de líderes empresariais, especialistas e stakeholders dedicados a impulsionar a Agenda 2030 no Brasil. O Fórum Ambição 2030 é o palco para discussões estratégicas, apresentação de cases de sucesso, networking e definição de próximos passos para os Movimentos.
+                    </p>
+                    <ul class="space-y-2 text-gray-700 mb-6">
+                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" /></svg>Data: [A DEFINIR]</li>
+                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>Local: [A DEFINIR] / Online</li>
+                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>Principais temas: Inovação, Metas ESG, Colaboração Setorial.</li>
+                    </ul>
+                    <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                        Saiba Mais e Inscreva-se
+                    </a>
+                </div>
+                <div class="md:w-1/2">
+                    <!-- Substituir por imagem do fórum ou visual relacionado -->
+                    <img src="https://via.placeholder.com/450x350.png?text=Fórum+Ambição+2030" alt="Fórum Ambição 2030" class="rounded-lg shadow-lg w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Como Aderir -->
+    <section id="adesao" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 section-title-underline">Junte-se à Ambição 2030</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
+                Sua empresa pode fazer a diferença. A adesão aos Movimentos é simples, gratuita para participantes do Pacto Global, e o primeiro passo para uma jornada de impacto.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-10">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex justify-center mb-4">
+                        <div class="bg-blue-500 text-white rounded-full h-12 w-12 flex items-center justify-center text-xl font-bold">1</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Seja Participante</h3>
+                    <p class="text-gray-600 text-sm">Certifique-se de que sua empresa é participante do Pacto Global da ONU no Brasil.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex justify-center mb-4">
+                        <div class="bg-blue-500 text-white rounded-full h-12 w-12 flex items-center justify-center text-xl font-bold">2</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Escolha seus Movimentos</h3>
+                    <p class="text-gray-600 text-sm">Analise os 10 Movimentos e identifique aqueles mais alinhados com a estratégia e os desafios da sua empresa. Você pode aderir a quantos quiser!</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex justify-center mb-4">
+                        <div class="bg-blue-500 text-white rounded-full h-12 w-12 flex items-center justify-center text-xl font-bold">3</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Assuma o Compromisso</h3>
+                    <p class="text-gray-600 text-sm">Formalize sua adesão e assuma compromissos públicos com metas claras para impulsionar os ODS selecionados.</p>
+                </div>
+            </div>
+            <a href="#" class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                Quero Aderir Agora!
+            </a>
+        </div>
+    </section>
+
+    <!-- Seção Prova Social (Simplificada) -->
+    <section id="parceiros" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h3 class="text-center text-gray-600 font-semibold text-sm uppercase tracking-wider mb-8">Empresas que já abraçaram a Ambição 2030 (Exemplo)</h3>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                <!-- Substituir por logos reais -->
+                <img src="https://via.placeholder.com/120x60.png?text=Logo+Empresa+1" alt="Logo Empresa 1" class="h-10 md:h-12 opacity-70 hover:opacity-100 transition-opacity">
+                <img src="https://via.placeholder.com/120x60.png?text=Logo+Empresa+2" alt="Logo Empresa 2" class="h-10 md:h-12 opacity-70 hover:opacity-100 transition-opacity">
+                <img src="https://via.placeholder.com/120x60.png?text=Logo+Empresa+3" alt="Logo Empresa 3" class="h-10 md:h-12 opacity-70 hover:opacity-100 transition-opacity">
+                <img src="https://via.placeholder.com/120x60.png?text=Logo+Empresa+4" alt="Logo Empresa 4" class="h-10 md:h-12 opacity-70 hover:opacity-100 transition-opacity">
+                <img src="https://via.placeholder.com/120x60.png?text=Logo+Empresa+5" alt="Logo Empresa 5" class="h-10 md:h-12 opacity-70 hover:opacity-100 transition-opacity">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção FAQ -->
+    <section id="faq" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 section-title-underline">Perguntas Frequentes</h2>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="faq-item border border-gray-200 rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-4 md:p-6 focus:outline-none">
+                        <span class="text-lg font-semibold text-gray-700">O que é a Ambição 2030?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon h-6 w-6 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-answer px-4 md:p-6 text-gray-600 leading-relaxed">
+                        Ambição 2030 é uma estratégia do Pacto Global da ONU no Brasil para acelerar o cumprimento das metas da Agenda 2030, focando nos ODS prioritários para o país. Ela convida empresas a assumirem compromissos públicos e metas ambiciosas através de 10 Movimentos temáticos.
+                    </div>
+                </div>
+                <div class="faq-item border border-gray-200 rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-4 md:p-6 focus:outline-none">
+                        <span class="text-lg font-semibold text-gray-700">Minha empresa precisa ser participante do Pacto Global para aderir?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon h-6 w-6 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-answer px-4 md:p-6 text-gray-600 leading-relaxed">
+                        Sim, a adesão aos Movimentos da Ambição 2030 é exclusiva e gratuita para empresas participantes do Pacto Global da ONU no Brasil. Se sua empresa ainda não é participante, convidamos você a conhecer o processo de adesão ao Pacto Global.
+                    </div>
+                </div>
+                <div class="faq-item border border-gray-200 rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-4 md:p-6 focus:outline-none">
+                        <span class="text-lg font-semibold text-gray-700">Posso aderir a mais de um Movimento?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon h-6 w-6 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-answer px-4 md:p-6 text-gray-600 leading-relaxed">
+                        Com certeza! As empresas são incentivadas a aderir a quantos Movimentos estiverem alinhados com suas prioridades estratégicas e áreas de impacto.
+                    </div>
+                </div>
+                 <div class="faq-item border border-gray-200 rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-4 md:p-6 focus:outline-none">
+                        <span class="text-lg font-semibold text-gray-700">Quais são os benefícios de participar do Fórum Ambição 2030?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon h-6 w-6 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-answer px-4 md:p-6 text-gray-600 leading-relaxed">
+                        O Fórum Ambição 2030 é uma oportunidade única para networking com líderes, acesso a insights estratégicos, conhecimento de melhores práticas e colaboração para impulsionar as metas de sustentabilidade. É um espaço para aprender, compartilhar e cocriar soluções.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="font-semibold text-lg text-white mb-3">Ambição 2030</h4>
+                    <p class="text-sm">Uma iniciativa do Pacto Global da ONU no Brasil para acelerar a Agenda 2030.</p>
+                    <img src="https://www.unglobalcompact.org/assets/logos/un-global-compact-logo-white.svg" alt="Pacto Global Logo" class="h-16 mt-4">
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg text-white mb-3">Links Úteis</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://pactoglobal.org.br" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400">Pacto Global Brasil</a></li>
+                        <li><a href="#movimentos" class="hover:text-blue-400">Nossos Movimentos</a></li>
+                        <li><a href="#forum" class="hover:text-blue-400">Fórum Ambição 2030</a></li>
+                        <li><a href="https://brasil.un.org/pt-br/sdgs" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400">Agenda 2030 ODS</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg text-white mb-3">Contato</h4>
+                    <p class="text-sm">Para mais informações sobre a Ambição 2030 ou como se tornar um participante do Pacto Global, entre em contato conosco.</p>
+                    <a href="mailto:contato@pactoglobal.org.br" class="text-sm text-blue-400 hover:underline mt-2 inline-block">contato@pactoglobal.org.br</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
+                <p>© <span id="currentYear"></span> Pacto Global da ONU no Brasil. Todos os direitos reservados.</p>
+                <p class="mt-1">Desenvolvido com foco em impacto e sustentabilidade.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
